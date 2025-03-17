@@ -1,0 +1,64 @@
+Requirements for iPXE Signing by Microsoft,,,,
+,,,,
+Number,Section,Description,State,Status
+1a,UEFI Signing Requirements,EV Certificate ,Manual Verification ,Digicert EV Cert
+1b,,Azure Active Directory Account ,Manual Verification,keithg@deploymentlive.com
+2,,Production Code Only ,Manual Verification ,"All code is production ready, no test code."
+3,,External Public use Only ,Manual Verification ,Product is designed for external (customer) use.
+4,,No licenses under GPLv3 ,Manual Verification ,iPXE is GPLv2
+5,,No known Malware Vectors  ,Manual Verification ,None at this time
+6,,No known security vulnerabilities ,Manual Verification ,None at this time
+7,,Pre-Submission Testing Document ,Manual Verification ,See section 21 below for pre-testing
+8,,No EFI_RUNTIME_DRIVER ,Pass PesterTest,8
+9,,no EFI Byte Code ,Pass PesterTest,9
+10,,Special Requirements for Full Disk Encryption ,N/A,Does not apply here
+11,,Special Requirements for Multi-Module submissions ,N/A,Does not apply here - Single binary submissions.
+12,,Special Requirements for SHIMs ,N/A,Does not apply here - Not a SHIM
+13,,Special Requirements for iPXE ,Manual Verification ,13a through 13f
+13a,,Branch from iPXE after commit [7428ab7] - Sept 2017,Pass PesterTest,13.a
+13b,,iPXE NFS Functionality removed ,Pass PesterTest,13.b
+13c,,iPXE Wireless Functionality removed ,Pass PesterTest,13.c
+13d,,non-UEFI loaders removed ,Manual Verification ,* Previous iPXE Code Reviews. No changes here.
+13e,,Follow iPXE review document,Manual Verification ,See Steps 23 through 28
+13f,,Report **any/all** changes to ipxe code. ,Manual Verification ,Can Do
+14a,New UEFI CA memory mitigation req,4kb page size,Pass PesterTest,14.a
+14b,,Do not combine Write with Execute,Pass PesterTest,14.b
+15,,DLL Characteristics,N/A,Does not apply here - Single binary submissions.
+16,,Verify NX Compat,Pass PesterTest,16.a
+17,,No Self Modifying Code,Manual Verification ,* Previous iPXE Code Reviews. No changes here.
+18,,No loader for external Code,Manual Verification ,* Previous iPXE Code Reviews. No changes here.
+18a,,Code must maintain Write and Execute Exclusivity,Manual Verification ,* Previous iPXE Code Reviews. No changes here.
+18b,,Code must not allow allocated memory execution,Manual Verification ,* Previous iPXE Code Reviews. No changes here.
+19,,App should not touch bytes 0 through 4kb,Manual Verification ,* Previous iPXE Code Reviews. No changes here.
+20,,No code execution on stack,Manual Verification ,* Previous iPXE Code Reviews. No changes here.
+21,Pre-submission testing for UEFI,Test Sign and verify UEFI modules,Manual Verification ,See 21a and 21b
+21a,,Sign your product with your Certificate,Pass PesterTest,21.a
+21b,,Add this certificate to the SercureBoot db,Manual Verification ,Picture
+22,,Use the HCK to test,N/A,Use section 21 above
+22a,,Prepare the Test System,N/A,Use section 21 above
+22b,,Test Sign the UEFI Module,N/A,Use section 21 above
+22c,,Install the Lost Cert,N/A,Use section 21 above
+22d,,Verify test signed passes,N/A,Use section 21 above
+23,iPXE Security Assurance Review,All reported bugs must be resolved,Manual Verification ,Can Do
+24,,imverify and imgtrust not necessary,Manual Verification ,imgtrust and imgverify are not included (26a through 26q)
+25,,Only include required components to reduce attack surface,Manual Verification ,Can Do
+26,,Pre-Approved Components,Manual Verification ,See sections 26a through 26q below
+26a,,DOWNLOAD_PROTO_HTTPS - https download,Manual Verification ,Pre-Approved: TCP: https
+26b,,HTTP_AUTH_NTLM - NTLM authentication,Manual Verification ,Pre-Approved: Commands: Previous iPXE tools
+26c,,HTTP_ENC_PEERDIST - Branch Cache,Manual Verification ,Pre-Approved: Commands: Previous iPXE tools
+26d,,IMAGE_GZIP - gzip Compression,Manual Verification ,Pre-Approved: Commands: Previous iPXE tools
+26e,,IMAGE_CMD - ImgMgmt commands,Manual Verification ,Pre-Approved: Commands: Previous iPXE tools
+26f,,FORM_CMD - Form commands,Manual Verification ,Pre-Approved: HCI: Shell
+26g,,NSLOOKUP_CMD - DNS resolving command,Manual Verification ,Pre-Approved: UDP: dns
+26h,,REBOOT_CMD - Reboot command,Manual Verification ,Pre-Approved: HCI: Shell
+26i,,POWEROFF_CMD - Power off command,Manual Verification ,Pre-Approved: HCI: Shell
+26j,,PARAM_CMD - Request parameter commands,Manual Verification ,Pre-Approved: TCP: http/https
+26k,,NEIGHBOUR_CMD - Neighbour management,Manual Verification ,Pre-Approved: Protocol: Neighbor
+26l,,PING_CMD - Ping command,Manual Verification ,Pre-Approved: Protocol: Ping
+26m,,CONSOLE_CMD - Console command,Manual Verification ,Pre-Approved: HCI: Shell
+26n,,IPSTAT_CMD - IP statistics commands,Manual Verification ,Pre-Approved: Protocol: ipv4
+26o,,NTP_CMD - NTP commands,Manual Verification ,Pre-Approved: TCP: https
+26p,,CERT_CMD - Certificate commands,Manual Verification ,Pre-Approve: Crypto: ALL
+26q,,IMAGE_ARCHIVE_CMD - uncompress files,Manual Verification ,Pre-Approved: Commands: Previous iPXE tools
+27,,imgtrust allows for self-signed images to be loaded,Manual Verification ,imgtrust and imgverify are not included (26a through 26q)
+28,,Remove gdbstub,Manual Verification ,gdbstub is not included
