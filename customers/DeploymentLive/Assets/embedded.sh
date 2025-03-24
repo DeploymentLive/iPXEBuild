@@ -8,6 +8,7 @@
 if ( iseq ${cwduri:ipv4} 104.116.116.112 )
     set force_filename ${cwduri}/cloudboot.ipxe ||
     echo HTTPS Boot: [${force_filename}]
+    # imgtrust
 end if
 
 #include version.ipxe
@@ -103,6 +104,14 @@ while ( NOT iseq ${BootAttempts} ${MaxFullRetries} )
                     set LastConnectError "HTTP download from ${force_filename}"
                     echo WARNING ${errno:hexraw} ${LastConnectError}
                     continue
+                end if
+
+                if ( NOT imgverify cloudboot.ipxe ${force_filename}.sig )
+                    set LastConnectError "image verify with ${force_filename}"
+                    echo WARNING ${errno:hexraw} ${LastConnectError}
+                    # Continue and let chain throw any errors if required. 
+                    # imgfree cloudboot.ipxe ||
+                    # continue
                 end if
 
                 if ( NOT chain cloudboot.ipxe )
