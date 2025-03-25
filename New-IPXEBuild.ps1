@@ -12,7 +12,7 @@ param (
     [string] $Config = 'DeploymentLive',
     [string] $WSLipxe = '~/ipxe',
     [string] $WSLscript = '~/ipxebuild',
-    [string] $Tag =  'quick' 
+    [string] $Tag =  'quick'
 )
 
 #region Initialize 
@@ -39,11 +39,11 @@ foreach ( $Dir in @( $TargetDir,"$TargetDir/Tmp","$TargetDir/Unsigned","$TargetD
     new-item -ItemType Directory $Dir -ErrorAction SilentlyContinue | Write-Verbose
 }
 
+$BuildSummary = @{ FilePath = "$ScriptRoot\build\BuildSummary.txt"; Append = $True }
 ('*' * 80) | out-file @BuildSummary
 
 while ( $true ) { try { stop-transcript } catch { break} }
 Start-Transcript -OutputDirectory $TargetDir <# -UseMinimalHeader #> | out-file @BuildSummary
-$BuildSummary = @{ FilePath = "$ScriptRoot\build\BuildSummary.txt"; Append = $True }
 
 #region Generate Version
 
@@ -102,7 +102,7 @@ foreach ( $Build in $Builds ) {
         $iPXECommandLine += "EXTRA_CFLAGS=""-DHTTP_ENC_PEERDIST=1"""
     }
 
-    if ( $Build.Tag -match 'ImgTrust' ) {
+    if ( $true ) { # $Build.Tag -match 'ImgTrust' ) {
         $iPXECommandLine += "EXTRA_CFLAGS=""-DIMAGE_TRUST_CMD=1"""
     }
 
