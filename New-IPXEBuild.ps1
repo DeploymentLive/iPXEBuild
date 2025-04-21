@@ -94,6 +94,8 @@ foreach ( $Build in $Builds ) {
         "make"    
         $build.MakeTarget
         "CONFIG=$Config"
+        # "DEBUG=asn1" # ,validator,x509,tls,httpcore:3" # cursor
+        
         # "EMBED=$WSLFullTarget/tmp/$($Build.FriendlyName).ipxe.gz,$WSLFullConfig/Assets/Logo.png"
         "EMBED=$WSLFullTarget/tmp/$($Build.FriendlyName).ipxe,$WSLFullConfig/Assets/Logo.png"
         )
@@ -102,13 +104,16 @@ foreach ( $Build in $Builds ) {
         $iPXECommandLine += "EXTRA_CFLAGS=""-DHTTP_ENC_PEERDIST=1"""
     }
 
-    if ( $true ) { # $Build.Tag -match 'ImgTrust' ) {
+    if ( $Build.Tag -match 'ImgTrust' ) {
         $iPXECommandLine += "EXTRA_CFLAGS=""-DIMAGE_TRUST_CMD=1"""
     }
 
     if ( $Build.Certs -eq 'CA' ) {
         Write-Verbose "Only include the CA cert"
         $iPXECommandLine += "CERT=$WSLFullConfig/Certs/ca.crt","TRUST=$WSLFullConfig/Certs/ca.crt"
+    }
+    elseif ( $Build.Certs -ne 'BOTH' ) {
+        Write-Verbose "Include only ipxe CA certs"
     }
     else {
         Write-Verbose "Include All certs"
