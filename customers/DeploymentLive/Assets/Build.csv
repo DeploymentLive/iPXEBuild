@@ -8,10 +8,10 @@ snp_x86.efi,Full,FALSE,Free Community,UEFI with SNP driver,build,bin-i386-efi-sb
 snp_x_x86.efi,Full,FALSE,Free Community,"UEFI with SNP, USB & other drivers",build,bin-i386-efi-sb/snp--ecm--acm--ncm--axge--bnxt--tg3--intel--intelxl--ice--vmxnet3--netfront.efi
 ipxe_x64.efi,Full,FALSE,Free Community,UEFI with FULL drivers,build,bin-x86_64-efi/ipxe.efi
 snp_CA_x64.efi,CA,TRUE,Free Community,UEFI with SNP driver,build,bin-x86_64-efi-sb/snp.efi
-snp_DRV_CA_x64.efi,CA,TRUE,Free Community,"UEFI with SNP, USB & other drivers",build HP Quick ISO USB,bin-x86_64-efi-sb/snp--ecm--acm--ncm--axge--bnxt--tg3--intel--intelxl--ice--vmxnet3--netfront.efi
+snp_DRV_CA_x64.efi,CA,TRUE,Free Community,"UEFI with SNP, USB & other drivers",build HP ISO,bin-x86_64-efi-sb/snp--ecm--acm--ncm--axge--bnxt--tg3--intel--intelxl--ice--vmxnet3--netfront.efi
 snp_x64.efi,Full,TRUE,Paid Customer,UEFI with SNP driver,build BC,bin-x86_64-efi-sb/snp.efi
-snp_DRV_x64.efi,Full,TRUE,Paid Customer,"UEFI with SNP, USB & other drivers",build HP ISO USB BC,bin-x86_64-efi-sb/snp--ecm--acm--ncm--axge--bnxt--tg3--intel--intelxl--ice--vmxnet3--netfront.efi
+snp_DRV_x64.efi,Full,TRUE,Paid Customer,"UEFI with SNP, USB & other drivers",build Quick HP ISO BC,bin-x86_64-efi-sb/snp--ecm--acm--ncm--axge--bnxt--tg3--intel--intelxl--ice--vmxnet3--netfront.efi
 snp_CA_aa64.efi,CA,TRUE,Free Community,UEFI with SNP driver,build,bin-arm64-efi-sb/snp.efi
-snp_DRV_CA_aa64.efi,CA,TRUE,Free Community,"UEFI with SNP, USB & other drivers",build Quick ISO USB,bin-arm64-efi-sb/snp--ecm--acm--ncm--axge--bnxt--tg3--intel--intelxl--ice--vmxnet3--netfront.efi
+snp_DRV_CA_aa64.efi,CA,TRUE,Free Community,"UEFI with SNP, USB & other drivers",build HP ISO,bin-arm64-efi-sb/snp--ecm--acm--ncm--axge--bnxt--tg3--intel--intelxl--ice--vmxnet3--netfront.efi
 snp_aa64.efi,Full,TRUE,Paid Customer,UEFI with SNP driver,build BC,bin-arm64-efi-sb/snp.efi
-snp_DRV_aa64.efi,Full,TRUE,Paid Customer,"UEFI with SNP, USB & other drivers",build ISO USB BC,bin-arm64-efi-sb/snp--ecm--acm--ncm--axge--bnxt--tg3--intel--intelxl--ice--vmxnet3--netfront.efi
+snp_DRV_aa64.efi,Full,TRUE,Paid Customer,"UEFI with SNP, USB & other drivers",build Quick HP ISO BC,bin-arm64-efi-sb/snp--ecm--acm--ncm--axge--bnxt--tg3--intel--intelxl--ice--vmxnet3--netfront.efi
