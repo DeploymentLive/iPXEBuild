@@ -286,6 +286,11 @@ sub SetBackgroundPNG
         return
     end if 
 
+    if ( iseq ${efi/DisableDeploymentLiveLogo} true )
+        # For customer who do not want the logo
+        set arg1 ""
+    end if
+
     ## -----
     ## Increase sides by 288 pixels, and top/bottom by 66
     ## -----
@@ -293,7 +298,7 @@ sub SetBackgroundPNG
     if ( NOT iseq ${arg1} "" ) 
         if ( isset ${BackgroundPNG} )
             echo ${cls}
-            isset ${debug} true && Echo background PNG already set || 
+            iseq ${debug} true && Echo background PNG already set || 
         else
             # Set console 1080p monitors and displays (Most Common)
             if ( console -x 1600 -y 900 -t 400 -l 300 -r 300 -b 100 -p ${arg1} -k )
@@ -303,7 +308,7 @@ sub SetBackgroundPNG
                 if ( console -x 1024 -y 768 -t 350 -l 30 -r 30 -b 30 -p ${arg1} -k )
                     set BackgroundPNG 1
                 else
-                    isset ${debug} true && Echo Unable to set background PNG || 
+                    iseq ${debug} true && Echo Unable to set background PNG || 
                 end if
             end if
         end if
@@ -313,13 +318,13 @@ sub SetBackgroundPNG
                 # set console for 1024x768 ( HyperV )
                 if ( NOT console -x 1024 -y 768 -l 30 -r 30 -t 30 -b 30 )
                     console ||
-                    isset ${debug} true && Echo Unable to clear console || 
+                    iseq ${debug} true && Echo Unable to clear console || 
                 end if
             end if
             clear BackgroundPNG ||
         else
             echo ${cls}
-            isset ${debug} true && Echo CLEAR background already set || 
+            iseq ${debug} true && Echo CLEAR background already set || 
         end if
     end if
 end sub
