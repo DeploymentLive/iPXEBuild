@@ -267,5 +267,246 @@ Previously observed security flaws have included incorrect file signature valida
 ---
 # Footnotes:
 
-[^1a]: EV Certificate </br>
-[^1b]: Azure Active Directory Account </br>
+[^1a]: <b>EV Certificate </b>
+(Manual Verification)
+Digicert EV Cert
+
+[^1b]: <b>Azure Active Directory Account </b>
+(Manual Verification)
+keithg@deploymentlive.com
+
+[^2]: <b>Production Code Only </b>
+(Manual Verification)
+All code is production ready, no test code.
+
+[^3]: <b>External Public use Only </b>
+(Manual Verification)
+Product is designed for external (customer) use.
+
+[^4]: <b>No licenses under GPLv3 </b>
+(Manual Verification)
+iPXE is GPLv2
+
+[^5]: <b>No known Malware Vectors  </b>
+(Manual Verification)
+None at this time
+
+[^6]: <b>No known security vulnerabilities </b>
+(Manual Verification)
+None at this time
+
+[^7]: <b>Pre-Submission Testing Document </b>
+(Manual Verification)
+See section 21 below for pre-testing
+
+[^8]: <b>No EFI_RUNTIME_DRIVER </b>
+(Pass PesterTest)
+8
+
+[^9]: <b>no EFI Byte Code </b>
+(Pass PesterTest)
+9
+
+[^10]: <b>Special Requirements for Full Disk Encryption </b>
+(N/A)
+Does not apply here
+
+[^11]: <b>Special Requirements for Multi-Module submissions </b>
+(N/A)
+Does not apply here - Single binary submissions.
+
+[^12]: <b>Special Requirements for SHIMs </b>
+(N/A)
+Does not apply here - Not a SHIM
+
+[^13]: <b>Special Requirements for iPXE </b>
+(Manual Verification)
+13a through 13f
+
+[^13a]: <b>Branch from iPXE after commit [7428ab7] - Sept 2017</b>
+(Pass PesterTest)
+13.a
+
+[^13b]: <b>iPXE NFS Functionality removed </b>
+(Pass PesterTest)
+13.b
+
+[^13c]: <b>iPXE Wireless Functionality removed </b>
+(Pass PesterTest)
+13.c
+
+[^13d]: <b>non-UEFI loaders removed </b>
+(Manual Verification)
+* Previous iPXE Code Reviews. No changes here.
+
+[^13e]: <b>Follow iPXE review document</b>
+(Manual Verification)
+See Steps 23 through 28
+
+[^13f]: <b>Report **any/all** changes to ipxe code. </b>
+(Manual Verification)
+Can Do
+
+[^14a]: <b>4kb page size</b>
+(Pass PesterTest)
+14.a
+
+[^14b]: <b>Do not combine Write with Execute</b>
+(Pass PesterTest)
+14.b
+
+[^15]: <b>DLL Characteristics</b>
+(N/A)
+Does not apply here - Single binary submissions.
+
+[^16]: <b>Verify NX Compat</b>
+(Pass PesterTest)
+16.a
+
+[^17]: <b>No Self Modifying Code</b>
+(Manual Verification)
+* Previous iPXE Code Reviews. No changes here.
+
+[^18]: <b>No loader for external Code</b>
+(Manual Verification)
+* Previous iPXE Code Reviews. No changes here.
+
+[^18a]: <b>Code must maintain Write and Execute Exclusivity</b>
+(Manual Verification)
+* Previous iPXE Code Reviews. No changes here.
+
+[^18b]: <b>Code must not allow allocated memory execution</b>
+(Manual Verification)
+* Previous iPXE Code Reviews. No changes here.
+
+[^19]: <b>App should not touch bytes 0 through 4kb</b>
+(Manual Verification)
+* Previous iPXE Code Reviews. No changes here.
+
+[^20]: <b>No code execution on stack</b>
+(Manual Verification)
+* Previous iPXE Code Reviews. No changes here.
+
+[^21]: <b>Test Sign and verify UEFI modules</b>
+(Manual Verification)
+See 21a and 21b
+
+[^21a]: <b>Sign your product with your Certificate</b>
+(Pass PesterTest)
+21.a
+
+[^21b]: <b>Add this certificate to the SercureBoot db</b>
+(Manual Verification)
+Picture
+
+[^22]: <b>Use the HCK to test</b>
+(N/A)
+Use section 21 above
+
+[^22a]: <b>Prepare the Test System</b>
+(N/A)
+Use section 21 above
+
+[^22b]: <b>Test Sign the UEFI Module</b>
+(N/A)
+Use section 21 above
+
+[^22c]: <b>Install the Lost Cert</b>
+(N/A)
+Use section 21 above
+
+[^22d]: <b>Verify test signed passes</b>
+(N/A)
+Use section 21 above
+
+[^23]: <b>All reported bugs must be resolved</b>
+(Manual Verification)
+Can Do
+
+[^24]: <b>imverify and imgtrust not necessary</b>
+(Manual Verification)
+imgtrust and imgverify are not included (26a through 26q)
+
+[^25]: <b>Only include required components to reduce attack surface</b>
+(Manual Verification)
+Can Do
+
+[^26]: <b>Pre-Approved Components</b>
+(Manual Verification)
+See sections 26a through 26q below
+
+[^26a]: <b>DOWNLOAD_PROTO_HTTPS - https download</b>
+(Manual Verification)
+Pre-Approved: TCP: https
+
+[^26b]: <b>HTTP_AUTH_NTLM - NTLM authentication</b>
+(Manual Verification)
+Pre-Approved: Commands: Previous iPXE tools
+
+[^26c]: <b>HTTP_ENC_PEERDIST - Branch Cache</b>
+(Manual Verification)
+Pre-Approved: Commands: Previous iPXE tools
+
+[^26d]: <b>IMAGE_GZIP - gzip Compression</b>
+(Manual Verification)
+Pre-Approved: Commands: Previous iPXE tools
+
+[^26e]: <b>IMAGE_CMD - ImgMgmt commands</b>
+(Manual Verification)
+Pre-Approved: Commands: Previous iPXE tools
+
+[^26f]: <b>FORM_CMD - Form commands</b>
+(Manual Verification)
+Pre-Approved: HCI: Shell
+
+[^26g]: <b>NSLOOKUP_CMD - DNS resolving command</b>
+(Manual Verification)
+Pre-Approved: UDP: dns
+
+[^26h]: <b>REBOOT_CMD - Reboot command</b>
+(Manual Verification)
+Pre-Approved: HCI: Shell
+
+[^26i]: <b>POWEROFF_CMD - Power off command</b>
+(Manual Verification)
+Pre-Approved: HCI: Shell
+
+[^26j]: <b>PARAM_CMD - Request parameter commands</b>
+(Manual Verification)
+Pre-Approved: TCP: http/https
+
+[^26k]: <b>NEIGHBOUR_CMD - Neighbour management</b>
+(Manual Verification)
+Pre-Approved: Protocol: Neighbor
+
+[^26l]: <b>PING_CMD - Ping command</b>
+(Manual Verification)
+Pre-Approved: Protocol: Ping
+
+[^26m]: <b>CONSOLE_CMD - Console command</b>
+(Manual Verification)
+Pre-Approved: HCI: Shell
+
+[^26n]: <b>IPSTAT_CMD - IP statistics commands</b>
+(Manual Verification)
+Pre-Approved: Protocol: ipv4
+
+[^26o]: <b>NTP_CMD - NTP commands</b>
+(Manual Verification)
+Pre-Approved: TCP: https
+
+[^26p]: <b>CERT_CMD - Certificate commands</b>
+(Manual Verification)
+Pre-Approve: Crypto: ALL
+
+[^26q]: <b>IMAGE_ARCHIVE_CMD - uncompress files</b>
+(Manual Verification)
+Pre-Approved: Commands: Previous iPXE tools
+
+[^27]: <b>imgtrust allows for self-signed images to be loaded</b>
+(Manual Verification)
+imgtrust and imgverify are not included (26a through 26q)
+
+[^28]: <b>Remove gdbstub</b>
+(Manual Verification)
+gdbstub is not included
