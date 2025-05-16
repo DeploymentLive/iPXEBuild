@@ -1,15 +1,18 @@
 # ipxe build system for DeploymentLive.com
 
-iPXE is an open-source Network Boot loader that is OS independent. However it does require a Linux system to build the binaries. We can accomplish this on a Windows machine by installing the Windows Subsystem or Linux (WSL) and building from there. 
+iPXE is an open-source Network Boot loader that is run before the OS Starts. However it does require a Linux system to build the binaries. We can accomplish this on a Windows machine by installing the Windows Subsystem or Linux (WSL) and building from there. 
 
-WSL is ideal in the scenario, because we can copy files back and forth between WSL and Windows to perform various build tasks. 
+WSL is ideal in the scenario, because we can copy files back and forth between WSL and Windows to perform additional build tasks. 
 
 ## Design Goals:
 
 We will need several customizations of iPXE for DeploymentLive and other customers, this can be performed by turing on and off iPXE features with `#define XXXX` statements within the source code or made at the command line.
 
-All customizations required by Deployment Live will be kept in this repo, not within changes made in any github 'Fork' of the ipxe repro. We will accomplish this with just a few symbolic links made from our settings folder to the ipxe `/src/config/local/DeploymentLive` folder. This allows for the ipxe repro to be kept clean of all changes made for Delployment Live. for more information see: https://ipxe.org/buildcfg
+All customizations required by Deployment Live will be kept in this repo. We will accomplish this with just a few symbolic links made from our settings folder to the ipxe `/src/config/local/DeploymentLive` folder. This allows for the ipxe repro to be kept clean of all changes made for Delployment Live. for more information see: https://ipxe.org/buildcfg.
 
+There is only one code change I have made to iPXE, which is to add the command `sha256sum` with the argument `-sum`. 
+See: https://github.com/ipxe/ipxe/compare/master...DeploymentLive:ipxe:master
+I anticipate submitting a Pull Request into iPXE soon.
 
 ## Installation
 

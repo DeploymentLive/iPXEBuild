@@ -1,14 +1,19 @@
 #!ipxe
 
 # Copyright Deployment Live LLC, All Rights Reserved
+# No redistribution without written permission
 
 #region Init
 
-# When booting from HTTPS, ${cwduri} will point to iPXE Server. DHCP may overwrite, so save now.
+# When booting from HTTPS, ${cwduri} will point to source Server. 
+# DHCP can overwrite ${cwduri}, so save the value if the string starts with 'http'.
+## The next line is a hack. ipxe scripting does NOT allow for string comparison.
+## But that is OK, we only need to know if the first 4 characters are 'http'.
+## ${cwduri:ipv4} converts the first 4 characters of the string to a dot delimited array of decimal integers.
+## 104.116.116.112 is a dot delimited representation of the string 'http'
 if ( iseq ${cwduri:ipv4} 104.116.116.112 )
     set force_filename ${cwduri}/cloudboot.ipxe ||
     echo HTTPS Boot: [${force_filename}]
-    # imgtrust
 end if
 
 #include version.ipxe
@@ -100,21 +105,7 @@ while ( NOT iseq ${BootAttempts} ${MaxFullRetries} )
                 inc CallAttempts || 
 
                 echo -n ${fgcyan}Connect [${CallAttempts}/4]: ${fgdefault}
-                if ( NOT initrd --name cloudboot.ipxe ${force_filename} )
-                    set LastConnectError "HTTP download from ${force_filename}"
-                    echo WARNING ${errno:hexraw} ${LastConnectError}
-                    continue
-                end if
-
-                if ( NOT imgverify cloudboot.ipxe ${force_filename}.sig )
-                    set LastConnectError "image verify with ${force_filename}"
-                    echo WARNING ${errno:hexraw} ${LastConnectError}
-                    # Continue and let chain throw any errors if required. 
-                    # imgfree cloudboot.ipxe ||
-                    # continue
-                end if
-
-                if ( NOT chain cloudboot.ipxe )
+                if ( NOT chain --name cloudboot.ipxe ${force_filename} )
                     set LastConnectError "chain call to ${force_filename}"
                     echo WARNING ${errno:hexraw} ${LastConnectError}
                     imgfree cloudboot.ipxe ||

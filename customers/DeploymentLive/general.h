@@ -6,6 +6,15 @@
  *
  */
 
+ 
+//
+// Reviewer's note:
+// This file has been copied from the iPXE source tree.
+// It has been modified to represent the OPPOSITE of the iPXE defaults. 
+// IF you uncomment a line it will change the default iPXE behaviour.
+//
+
+
 /*
  * Banner timeout configuration
  *

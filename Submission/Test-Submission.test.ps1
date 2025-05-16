@@ -155,10 +155,10 @@ Describe "21. Test Signed" {
 Describe "27. imgtrust not trusted" {
 
     it "27.a. verify imgtrust not present" {
-      #  $binary | select-string -Pattern '\bimgtrust\b' -ErrorAction SilentlyContinue | should BeNullOrEmpty        
+        $binary | select-string -Pattern '\bimgtrust\b' -ErrorAction SilentlyContinue | should BeNullOrEmpty        
     }
     it "27.b. verify imgverify not present" {
-      #  $binary | select-string -Pattern '\bimgverify\b' -ErrorAction SilentlyContinue | should BeNullOrEmpty        
+        $binary | select-string -Pattern '\bimgverify\b' -ErrorAction SilentlyContinue | should BeNullOrEmpty        
     }
 
 }
